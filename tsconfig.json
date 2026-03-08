@@ -26,8 +26,10 @@
         }
     ],
     "types": [
-        "@cloudflare/workers-types/2023-07-01",
-        "node"
+      "@cloudflare/workers-types/2023-07-01",
+      "node",
+      "vitest/globals",
+      "@testing-library/jest-dom/vitest"
     ]
   },
   "include": ["src", "./*.d.ts", "./*.config.ts"]

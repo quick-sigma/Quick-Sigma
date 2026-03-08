@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  padding: 0 5%;
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  aspect-ratio: 7 / 15;
+  font-family: 'Quicksand', sans-serif;
+  gap: 10px;
+}
+
+.logoGlyph {
+  font-size: 1.5rem;
+}
+
+.logoLabel {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navigationLinks {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.navigationLink {
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 1rem;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.navigationLink:hover {
+  color: #f8fafc;
+}
+
+.navigationLink.active {
+  font-size: 1.2rem;
+  color: #818cf8;
+  font-weight: 600;
+}
+
+.cta {
+  background: linear-gradient(135deg, #6C5CE7 0%, #4f46e5 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 6px -2px rgba(108, 92, 231, 0.2);
+}
+
+.cta:hover {
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 10px 15px -3px rgba(108, 92, 231, 0.4);
+}

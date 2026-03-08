@@ -1,8 +1,5 @@
-/**
- * This is the base config for vite.
- * When building, the adapter config is used which loads this file and extends it.
- */
-import { defineConfig, type UserConfig } from "vite";
+import { defineConfig } from "vitest/config";
+import type { UserConfig } from "vite";
 import { qwikVite } from "@builder.io/qwik/optimizer";
 import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -31,6 +28,16 @@ export default defineConfig(({ command, mode }): UserConfig => {
     plugins: [qwikCity({
       platform
     }), qwikVite(), tsconfigPaths({ root: "." })],
+    define: {
+      "globalThis.qTest": true,
+      "globalThis.qDev": true,
+    },
+    test: {
+      globals: true,
+      include: ["src/**/*.spec.{ts,tsx}"],
+      environment: "jsdom",
+      setupFiles: ["./vitest.setup.ts"],
+    },
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.
