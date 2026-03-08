@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-// ✅ No importar CSS aquí
 
 export const HeroCTA = component$(() => {
   return (

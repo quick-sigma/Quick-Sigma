@@ -1,13 +1,11 @@
-import { component$, useStyles$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import styles from "./styles.module.css";
-import stylesRaw from "./styles.module.css?inline";
 
 interface NavigationProps {
   activeLink?: string;
 }
 
 export const Navigation = component$<NavigationProps>(({ activeLink }) => {
-  useStyles$(stylesRaw);
   const links = [
     { name: "Inicio", href: "#" },
     { name: "Tienda", href: "/store" },
@@ -25,13 +23,13 @@ export const Navigation = component$<NavigationProps>(({ activeLink }) => {
               class={{
                 [styles.navigationLink]: true,
                 [styles.active]: activeLink === link.name,
-                ["active"]: activeLink === link.name,
+                active: activeLink === link.name,
               }}
               style={{
                 fontFamily: "Quicksand, sans-serif",
                 fontSize: activeLink === link.name ? "1.2rem" : "1rem",
-                transition: "all 0.3s ease",
-                color: activeLink === link.name ? "#6C5CE7" : "#2D3436",
+                transition: "all 0.3s cubic-bezier(0.22, 1, 0.36, 1)",
+                color: activeLink === link.name ? "#818cf8" : "#94a3b8",
               }}
             >
               {link.name}

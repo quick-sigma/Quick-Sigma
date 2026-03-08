@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
-// ✅ No importar CSS aquí
 
+// 1 = sigma tile activo, 0 = tile dim de fondo
 const SIGMA_GRID: number[][] = [
   [1, 1, 1, 1, 1, 1, 1],
   [1, 1, 0, 0, 0, 0, 0],
@@ -14,15 +14,15 @@ const SIGMA_GRID: number[][] = [
 ];
 
 export const HeroTiles = component$(() => {
-  let tileIndex = 0;
+  let activeTileIndex = 0;
 
   return (
     <div id="tilesGraphics" class="qs-tiles">
       {SIGMA_GRID.map((row, rowIdx) =>
         row.map((cell, colIdx) => {
           if (cell === 1) {
-            const delay = tileIndex * 0.04;
-            tileIndex++;
+            const delay = activeTileIndex * 0.04;
+            activeTileIndex++;
             return (
               <div
                 key={`${rowIdx}-${colIdx}`}
@@ -34,10 +34,11 @@ export const HeroTiles = component$(() => {
               />
             );
           }
+          // Tiles dim de fondo — dan contexto y profundidad
           return (
             <div
               key={`${rowIdx}-${colIdx}`}
-              class="qs-tile--empty"
+              class="qs-tile qs-tile--dim"
               data-row={String(rowIdx)}
               data-col={String(colIdx)}
             />

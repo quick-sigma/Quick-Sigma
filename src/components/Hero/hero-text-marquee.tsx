@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-// ✅ No importar CSS aquí
 
 const MARQUEE_ITEMS = [
   "Crear Software",

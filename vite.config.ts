@@ -37,6 +37,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
       include: ["src/**/*.spec.{ts,tsx}"],
       environment: "jsdom",
       setupFiles: ["./vitest.setup.ts"],
+      reporters: ['default'],
     },
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {

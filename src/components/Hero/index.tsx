@@ -5,7 +5,6 @@ import HeroCTA from "./hero-cta";
 import heroStyles from "./hero.css?inline";
 
 export const Hero = component$(() => {
-  // ✅ useStyles$ SOLO en el componente raíz
   useStyles$(heroStyles);
 
   return (
@@ -15,6 +14,8 @@ export const Hero = component$(() => {
         <HeroTiles />
         <HeroCTA />
       </div>
+
+
     </section>
   );
 });
