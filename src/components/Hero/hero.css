@@ -222,14 +222,17 @@
   grid-row: 1 / 3;
   justify-self: center;
   align-self: center;
-  transform: perspective(1200px) rotateX(55deg) rotateZ(-45deg);
+  --qs-persp: 1200px;
+  --qs-scale: 1;
+  transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale));
   transform-style: preserve-3d;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
   z-index: 1;
   opacity: 0;
-  animation: qs-tilesEntrance 1.8s var(--qs-ease) 0.3s forwards;
+  /* El qs-speedFloat se encadena despues de la entrada original para dar movimiento de flote*/
+  animation: qs-tilesEntrance 1.8s var(--qs-ease) 0.3s forwards, qs-speedFloat 3s ease-in-out infinite 2.1s;
 }
 
 .qs-tile {
@@ -569,7 +572,7 @@
 @keyframes qs-tilesEntrance {
   0% {
     opacity: 0;
-    transform: perspective(1200px) rotateX(0deg) rotateZ(0deg) scale(0.92);
+    transform: perspective(var(--qs-persp)) rotateX(0deg) rotateZ(0deg) scale(calc(var(--qs-scale) * 0.92));
   }
 
   40% {
@@ -578,8 +581,56 @@
 
   100% {
     opacity: 1;
-    transform: perspective(1200px) rotateX(55deg) rotateZ(-45deg) scale(1);
+    transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale));
   }
+}
+
+@keyframes qs-speedFloat {
+  0% {
+    transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale)) translateZ(0) translateY(0);
+  }
+
+  50% {
+    transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale)) translateZ(12px) translateY(-5px);
+  }
+
+  100% {
+    transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale)) translateZ(0) translateY(0);
+  }
+}
+
+/* ============================================
+   CLICK INTERACTIONS (VERDE/ROJO)
+   ============================================ */
+
+/* Click correcto (Verde) */
+.qs-tile--green {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.5) 0%, rgba(5, 150, 105, 0.4) 100%) !important;
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 4px 16px rgba(16, 185, 129, 0.4) !important;
+}
+
+.qs-tile--green:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.7) 0%, rgba(5, 150, 105, 0.6) 100%) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 12px 24px rgba(16, 185, 129, 0.5) !important;
+}
+
+/* Click incorrecto (Rojo) */
+.qs-tile--red {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.5) 0%, rgba(220, 38, 38, 0.4) 100%) !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 4px 16px rgba(239, 68, 68, 0.4) !important;
+  opacity: 1 !important;
+}
+
+.qs-tile--red:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.7) 0%, rgba(220, 38, 38, 0.6) 100%) !important;
 }
 
 /* ============================================
@@ -610,7 +661,9 @@
   .qs-tiles {
     grid-column: 1;
     grid-row: 2;
-    transform: perspective(800px) rotateX(55deg) rotateZ(-45deg) scale(0.75);
+    --qs-persp: 800px;
+    --qs-scale: 0.75;
+    transform: perspective(var(--qs-persp)) rotateX(55deg) rotateZ(-45deg) scale(var(--qs-scale));
   }
 
   .qs-cta {
