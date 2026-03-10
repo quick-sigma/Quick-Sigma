@@ -1,0 +1,54 @@
+/* ============================================
+   STARFIELD — Static with random glow
+   ============================================ */
+.qs-stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ============================================
+   INDIVIDUAL STARS
+   ============================================ */
+.qs-star {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    transition: opacity 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease;
+}
+
+/* Depth layers — only visual size/opacity, no movement */
+.qs-star--z1 {
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.qs-star--z2 {
+    box-shadow: 0 0 2px rgba(200, 210, 255, 0.25);
+}
+
+.qs-star--z3 {
+    box-shadow: 0 0 3px rgba(165, 180, 252, 0.35);
+}
+
+/* ============================================
+   BRIGHT STATE — randomly activated
+   ============================================ */
+.qs-star--bright {
+    opacity: 1 !important;
+    transform: scale(1.8);
+    box-shadow:
+        0 0 8px rgba(165, 180, 252, 0.8),
+        0 0 20px rgba(129, 140, 248, 0.5),
+        0 0 40px rgba(99, 102, 241, 0.25);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .qs-star {
+        transition: none !important;
+    }
+}
